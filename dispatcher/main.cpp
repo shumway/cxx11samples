@@ -4,9 +4,9 @@
 #include "ParallelDispatcher.h"
 
 /// Simple class to demonstrate ParallelDispatcher.
-class Greeter {
+class DelayedGreeter {
 public:
-  Greeter(const std::string& name, int delay) : name(name), delay(delay) {
+  DelayedGreeter(const std::string& name, int delay) : name(name), delay(delay) {
   }
 
   void greet(const std::string& message) {
@@ -21,16 +21,16 @@ public:
 int main(int argc, char** argv) {
   ParallelDispatcher<Greeter> dispatcher;
 
-  Greeter alice("Alice", 2);
+  DelayedGreeter alice("Alice", 2);
   dispatcher.add(&alice); 
 
-  Greeter bob("Bob", 1);
+  DelayedGreeter bob("Bob", 1);
   dispatcher.add(&bob); 
 
-  Greeter charlie("Charlie", 5);
+  DelayedGreeter charlie("Charlie", 5);
   dispatcher.add(&charlie); 
 
-  dispatcher.call(&Greeter::greet, "Hi there!");   
+  dispatcher.call(&DelayedGreeter::greet, "Hi there!");   
 
   return 0;
 }
